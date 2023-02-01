@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Answer</title>
+</head>
+<body>
+<div align="center">
+    <h1>Create New Answer</h1>
+    <br />
+    <form action="#" th:action="@{/answer/save}" th:object="${answer}" method="post">
+
+        <table border="0" cellpadding="10">
+<!--            <tr>-->
+<!--                <td>Answer id:</td>-->
+<!--                <td><input type="text" th:field="*{id}" required/></td>-->
+<!--            </tr>-->
+            <tr>
+                <td>Answer Name:</td>
+                <td><input type="text" th:field="*{name}" required/></td>
+            </tr>
+        </table>
+            <tr>
+                <td colspan="2"><button type="save">Save</button> </td>
+            </tr>
+    </form>
+        </br>
+            <a th:href="@{/test/list}">Go to test-list</a>
+        </br>
+        </br>
+            <a th:href="@{/question/list}">Go to question-list</a>
+        </br>
+        </br>
+            <a th:href="@{/answer/list}">Go to answer-list</a>
+        </br>
+        </br>
+            <a th:href="@{/}">Return to homepage</a>
+        </br>
+</body>
+</html>

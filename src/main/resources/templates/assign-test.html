@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Test Assignment</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div align="center">
+    <h1>Assign Test to Question</h1>
+    <a th:href="@{/question/list}">Question List</a>
+    <br />
+    <form action="#" th:action="@{/test/assign}" method="post">
+        <input type="hidden" name="questionId" th:value="${question.id}"/>
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Question Id: <strong><span th:text="${question.id}"></span></strong></td>
+            </tr>
+            <tr>
+                <td>Question Name: <strong><span th:text="${question.name}"></span></strong></td>
+            </tr>
+            <tr>
+                <td>Assign Test:
+                    <select class="form-select" name="testId">
+                        <option th:if="${testList.isEmpty()}">None Available</option>
+                        <option th:each="test : ${testList}" th:value="${test.id}" th:text="${test.toString()}"></option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td><button type="submit" th:disabled="${testList.isEmpty()}">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

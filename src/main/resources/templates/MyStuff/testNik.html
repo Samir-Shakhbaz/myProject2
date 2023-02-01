@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Question Manager</title>
+</head>
+<body>
+<div align="center">
+    <h1>
+        <span> Test <th:block th:text="${testObject.name}">[name]</th:block> </span>
+    </h1>
+
+    <br/><br/>
+
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>Test Id</th>
+            <th>Test Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="question : ${testObject.questions}">
+            <td th:text="${question.id}"></td>
+            <td th:text="${question.name}"></td>
+
+            <table border="1" cellpadding="10">
+                <thead>
+                <tr>
+                    <th>Answer Id</th>
+                    <th>Answer Name</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="answer : ${question.answers}">
+                    <td th:text="${answer.id}"></td>
+                    <td th:text="${answer.name}"></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div  th:each="answer : ${question.answers}" >
+                <input type="radio">
+
+            </div>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

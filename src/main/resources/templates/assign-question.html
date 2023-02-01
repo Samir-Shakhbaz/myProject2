@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Question Assignment</title>
+</head>
+<body>
+<div align="center">
+    <h1>Assign Question to Answer</h1>
+    <a th:href="@{/answer/list}">Answer List</a>
+    <br />
+    <form action="#" th:action="@{/answer/question/assign}" method="post">
+        <input type="hidden" name="answerId" th:value="${answer.id}"/>
+        <table border="0" cellpadding="10">
+            <tr>
+                <td>Answer Id: <strong><span th:text="${answer.id}"></span></strong></td>
+            </tr>
+            <tr>
+                <td>Answer Name: <strong><span th:text="${answer.name}"></span></strong></td>
+            </tr>
+            <tr>
+                <td>Assign Question:
+                    <select class="form-select" name="questionId">
+                        <option th:if="${questionList.isEmpty()}">None Available</option>
+                        <option th:each="question : ${questionList}" th:value="${question.id}" th:text="${question.toString()}"></option>
+                    </select></td>
+            </tr>
+            <tr>
+                <td><button type="submit" th:disabled="${questionList.isEmpty()}">Save</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
