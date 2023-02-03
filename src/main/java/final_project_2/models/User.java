@@ -1,11 +1,13 @@
 package final_project_2.models;
 
+import final_project_2.configs.Authority;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -23,9 +25,28 @@ public class User implements UserDetails {
     private String name;
     private String password;
 
-    public User(String name, String password) {
+
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "user_authority_join_table",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "authority_id")
+    )
+    private List<Authority> authorities;
+
+    private boolean accountNonExpired;
+    private boolean accountNonLocked;
+    private boolean credentialsNonExpired;
+    private boolean enabled;
+
+    public User(String name, String password, List<Authority> authorities) {
         this.name = name;
         this.password = password;
+        this.authorities = authorities;
+        accountNonExpired = true;
+        accountNonLocked = true;
+        credentialsNonExpired = true;
+        enabled = true;
     }
 
     @Override

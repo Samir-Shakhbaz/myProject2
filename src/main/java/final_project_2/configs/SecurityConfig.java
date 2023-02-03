@@ -21,12 +21,12 @@ public class SecurityConfig {
                 .cors().disable()
                 .authorizeHttpRequests(
                         (requests) -> requests
-                        .antMatchers("/", "/css/**").permitAll()
-//                        .antMatchers("/new").hasAnyAuthority("ADMIN", "NEW_USER")
+                                .antMatchers("/", "/css/**").permitAll()
+                                .antMatchers("/secure").hasAnyAuthority("ADMIN", "USER")
 //                        .antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR")
 //                        .antMatchers("/delete/**").hasAnyAuthority("ADMIN")
-                        .anyRequest().authenticated()
-                        )
+                                .anyRequest().authenticated()
+                )
                 .formLogin().and()
                 .logout();
 
@@ -39,6 +39,7 @@ public class SecurityConfig {
     }
 
 }
+
 
 
 

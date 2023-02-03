@@ -12,6 +12,7 @@ import final_project_2.services.QuestionService;
 import final_project_2.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.http.converter.json.GsonBuilderUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -86,35 +87,32 @@ public class AnswerController {
     @PostMapping(value = "/submit", consumes = {MediaType.APPLICATION_FORM_URLENCODED_VALUE})
     public String saveAnswer(@RequestParam MultiValueMap<String, String> values, Model model) {
 
-//        for (String questionId : values.keySet()) {
-//
-//            for (String answerId : values.get(questionId)) {
-//
-//                System.out.println("hello " + questionId + "-" + answerId);
-//
-//                Answer answer = answerService.getAnswer(Long.parseLong(answerId));
-//
-//                if (answer.isCorrect()) {
-//                    System.out.println("CORRECT");
-//                } else {
-//                    System.out.println("INCORRECT");
-//                }
-//            }
         Long testId = 0L;
 
         Set<Long> answerIds = values.values().stream()
                 .flatMap(Collection::stream)
                 .map(Long::parseLong)
                 .collect(Collectors.toSet());
-//
+
+        Map<Long, Answer> userAnswers = new HashMap<>();
+        Map<Long, Answer> correctAnswers = new HashMap<>();
+
         for (String questionId : values.keySet()) {
 
             Question question = questionService.getQuestion(Long.parseLong(questionId));
             testId = question.getTest().getId();
             boolean ok = true;
+
             List<Long> wrong = new ArrayList<>();
 
             for (Answer answer : question.getAnswers()) {
+                if(answerIds.contains(answer.getId())){
+                    userAnswers.put(question.getId(), answer);
+                }
+
+                if(answer.isCorrect()){
+                    correctAnswers.put(question.getId(), answer);
+                }
 
                 if (answer.isCorrect() && !answerIds.contains(answer.getId())) {
                     ok = false;
@@ -127,49 +125,7 @@ public class AnswerController {
 
                 System.out.println("hello " + questionId + "-" + answer.getId());
 
-//                Answer answer = answerService.getAnswer(Long.parseLong(answer.getId()));
 
-//                if (answerIds.contains(answer.getId()) && answer.isCorrect()) {
-//                    System.out.println("CORRECT-CORRECT");
-//                }
-//                if (answerIds.contains(answer.getId()) && !answer.isCorrect()) {
-//                    System.out.println("INCORRECT");
-//                }
-//                if (answerIds.contains(null) && answer.isCorrect()) {
-//                    System.out.println("INCORRECT");
-//                }
-//                if (answerIds.contains(null) && !answer.isCorrect()) {
-//                    System.out.println("IGNORE");
-//                }
-
-//
-//                for (int i = 0; i < values.keySet().size(); i++) {
-//                    for (int j = 0; j < question.getAnswers().size(); j++) {
-//
-//
-//                    }
-//
-//
-////                if (answer.isCorrect()) {
-////                    System.out.println("CORRECT");
-////                } else {
-////                    System.out.println("INCORRECT");
-////                }
-//                if (answer.getId() != null && answerIds.contains(answer.isCorrect())) {
-//                    System.out.println("CORRECT");
-//                }
-//                if (answer.getId() != null && !answer.isCorrect()) {
-//                    System.out.println("INCORRECT");
-//                }
-//                if (answer.getId() == null && answer.isCorrect()) {
-//                    System.out.println("INCORRECT");
-//                }
-//                if (answer.getId() == null && !answer.isCorrect()) {
-//                    System.out.println("CORRECT");
-//                }
-
-//
-//            }
 
             }
             System.out.println(questionId + ": " + ok + ", wrong: " + wrong);
@@ -179,7 +135,8 @@ public class AnswerController {
         Test test = newTestService.getTest(testId); // == new Test(1l, "Test 1", questions())
 
         model.addAttribute("testObject", test);
-
+        model.addAttribute("userAnswers", userAnswers);
+        model.addAttribute("correctAnswers", correctAnswers);
 
         return "answers";
     }

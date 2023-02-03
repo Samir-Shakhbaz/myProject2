@@ -31,4 +31,7 @@ public class Answer {
     )
     private Question question;
 
+    @Override
+    public String toString() { return (name + " (id-" + id + ")");}
+
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link th:href="@{/css/style3.css}" rel="stylesheet"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Test Your Java</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a th:href="@{/test/nik/tests}">Home</a></li>
+            <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
+            <li><a th:href="@{/create-account}">Create an account</a></li>
+            <li><a th:href="@{/logout}">Log out</a></li>
+            <!--            <li><a th:href="@{/test/list}">Go to test-list</a></li>-->
+            <!--            <li><a th:href="@{/question/list}">Go to question-list</a></li>-->
+            <!--            <li><a th:href="@{/answer/list}">Go to answer-list</a></li>-->
+            <li><a th:href="@{/secure/about}">About</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div align="center">
+    <h1>
+        Hello and welcome to the Java test page
+    </h1>
+
+
+</html>>

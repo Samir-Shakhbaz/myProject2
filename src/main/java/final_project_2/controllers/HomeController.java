@@ -25,16 +25,23 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/")
+    @GetMapping("/secure/")
     public String vewHomePage(Model model) {
         final List<Test> testList = newTestService.getAllTests();
         model.addAttribute("testList", testList);
         return "home";
     }
 
-    @GetMapping("/about")
-    public String about(){
-        return "about";
+    @GetMapping("/")
+    public String vewHomePageGuest(Model model) {
+        final List<Test> testList = newTestService.getAllTests();
+        model.addAttribute("testList", testList);
+        return "guest-home";
     }
+
+//    @GetMapping("/about")
+//    public String about(){
+//        return "about";
+//    }
 
 }

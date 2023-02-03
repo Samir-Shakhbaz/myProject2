@@ -59,7 +59,8 @@
 
             <td th:text="${question.id}"></td>
             <td th:text="${question.name}"></td>
-            <td></td>
+            <td th:text="${userAnswers.get(question.id)}"></td>
+            <td th:text="${correctAnswers.get(question.id)}"></td>
             <td></td>
         </tr>
         </tbody>
