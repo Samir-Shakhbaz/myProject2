@@ -1,8 +1,11 @@
 package final_project_2.controllers;
 
+//import final_project_2.ArticleService;
 import final_project_2.models.Test;
+import final_project_2.models.User;
 import final_project_2.services.NewTestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +14,9 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+
+//    @Autowired
+//    ArticleService articleService;
 
     @Autowired
     NewTestService newTestService;
@@ -25,23 +31,30 @@ public class HomeController {
         return "login";
     }
 
-    @GetMapping("/secure/")
-    public String vewHomePage(Model model) {
-        final List<Test> testList = newTestService.getAllTests();
-        model.addAttribute("testList", testList);
-        return "home";
-    }
 
-    @GetMapping("/")
-    public String vewHomePageGuest(Model model) {
+    @GetMapping("/guest")
+    public String vewHomePageGuest2(Model model) {
         final List<Test> testList = newTestService.getAllTests();
         model.addAttribute("testList", testList);
         return "guest-home";
     }
 
-//    @GetMapping("/about")
-//    public String about(){
-//        return "about";
-//    }
+    @GetMapping("/")
+    public String vewHomePageGuest(Model model) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        if (!principal.toString().equals("anonymousUser")){
+            User user = (User) principal;
+//            System.out.println(user);
+//            System.out.println(user.isAdmin());
+            model.addAttribute("isAdmin", user.isAdmin());
+        } else {
+            model.addAttribute("isAdmin", false);
+        }
+
+        final List<Test> testList = newTestService.getAllTests();
+        model.addAttribute("testList", testList);
+//        model.addAttribute("articleList", articleService.getMostPopular());
+        return "home";
+    }
 
 }

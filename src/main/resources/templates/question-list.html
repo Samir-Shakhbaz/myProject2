@@ -18,7 +18,7 @@
             <a class="navbar-brand" href="#">Test Your Java</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/test/nik/tests}">Home</a></li>
+            <li class="active"><a th:href="@{/test/tests}">Home</a></li>
             <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
             <li><a th:href="@{/create-account}">Create an account</a></li>
             <li><a th:href="@{/logout}">Log out</a></li>
@@ -44,7 +44,6 @@
             <th>Question ID</th>
             <th>Question Name</th>
             <th>Test name + (id)</th>
-            <th>Correct answer</th>
             <th>Actions</th>
         </tr>
         </thead>
@@ -53,7 +52,6 @@
             <td th:text="${question.id}">Question ID</td>
             <td th:text="${question.name}">Test name + (id)</td>
             <td th:text="${question.test}">Test Id</td>
-            <td></td>
             <td>    <!-- actions -->
                 <a th:href="@{'/question/edit/' + ${question.id}}">Edit</a>
                 <a th:href="@{'/question/delete/' + ${question.id}}">Delete</a>
@@ -68,15 +66,7 @@
     </br>
     <a th:href="@{/question/new}">Create new question</a>
     </br>
-    </br>
-    <a th:href="@{/test/list}">Go to test-list</a>
-    </br>
-    </br>
-    <a th:href="@{/answer/list}">Go to answer-list</a>
-    </br>
-    </br>
-        <a th:href="@{/}">Return to homepage</a>
-    </br>
+
 
 </div>
 

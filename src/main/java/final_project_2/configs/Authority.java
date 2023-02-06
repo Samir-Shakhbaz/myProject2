@@ -23,8 +23,7 @@ public class Authority implements GrantedAuthority {
     private AuthorityEnum authority;
 
     public String getAuthority() {
-        //this method needs to return a string as per the GrantedAuthority interface.
-        //therefore name() is called on the enumeration.
+        //this method returns a string as per the GrantedAuthority interface
         return authority.name();
     }
 }

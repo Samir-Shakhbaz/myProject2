@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public interface NewTestService {
-
     List<Test> getAllTests();
 
     @Transactional
@@ -20,9 +19,6 @@ public interface NewTestService {
 
     void deleteTest(Long id);
 
-//    public List<Test> getAvailableTest();
-
-//    Test get(Integer id);//////////////////////////TEST.HTML///////////////////////////////
 }
 
 

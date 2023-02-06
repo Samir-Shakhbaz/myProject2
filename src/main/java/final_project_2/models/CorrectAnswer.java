@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Entity
 @NoArgsConstructor
 @Table(name = "correct_answers")
-//@Builder
 @Getter
 @Setter
 public class CorrectAnswer {

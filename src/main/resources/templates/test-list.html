@@ -17,13 +17,13 @@
             <a class="navbar-brand" href="#">Test Your Java</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/test/nik/tests}">Home</a></li>
+            <li class="active"><a th:href="@{/test/tests}">Home</a></li>
             <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
             <li><a th:href="@{/create-account}">Create an account</a></li>
             <li><a th:href="@{/logout}">Log out</a></li>
-            <li><a th:href="@{/test/new}">Create new test</a></li>
-            <li><a th:href="@{/question/list}">Go to question-list</a></li>
-            <li><a th:href="@{/answer/list}">Go to answer-list</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/test/new}">Create new test</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/question/list}">Go to question-list</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/answer/list}">Go to answer-list</a></li>
         </ul>
     </div>
 </nav>
@@ -35,13 +35,11 @@
         <br/><br/>
         <div class="container" align="center">
             <h2>Java Fundamentals</h2>
-            <p>The .table-bordered class adds borders to a table:</p>
             <table class="table table-bordered">
             <thead>
             <tr>
                 <th>Test ID</th>
                 <th>Test Name</th>
-<!--                <th>Question Id</th>-->
                 <th>Question List</th>
                 <th>Test Link</th>
                 <th>Actions</th>
@@ -61,7 +59,7 @@
 
 <!--                <td th:text="${test.question != null} ? ${test.question.id}"></td>-->
                 <td>
-                    <a th:href="@{'/test/nik/tests/' + ${test.id}}">Link</a>
+                    <a th:href="@{'/test/tests/' + ${test.id}}">Link</a>
                 </td>
                 <td>    <!-- actions -->
                     <a th:href="@{'/test/edit/' + ${test.id}}">Edit</a>
@@ -70,6 +68,12 @@
             </tr>
             </tbody>
         </table>
+
+            </br>
+            <a th:href="@{/test/new}">Create new test</a>
+
+            </br>
+
     </div>
     </div>
 </body>

@@ -16,13 +16,13 @@
             <a class="navbar-brand" href="#">Test Your Java</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/test/nik/tests}">Home</a></li>
+            <li class="active"><a th:href="@{/test/tests}">Home</a></li>
             <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
-            <li><a th:href="@{/create-account}">Create an account</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/create-account}">Create an account</a></li>
             <li><a th:href="@{/logout}">Log out</a></li>
-            <li><a th:href="@{/test/list}">Go to test-list</a></li>
-            <li><a th:href="@{/question/list}">Go to question-list</a></li>
-            <li><a th:href="@{/answer/list}">Go to answer-list</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/test/list}">Go to test-list</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/question/list}">Go to question-list</a></li>
+            <li th:if="${isAdmin}"><a th:href="@{/answer/list}">Go to answer-list</a></li>
         </ul>
     </div>
 </nav>
@@ -61,7 +61,7 @@
             <td th:text="${question.name}"></td>
             <td th:text="${userAnswers.get(question.id)}"></td>
             <td th:text="${correctAnswers.get(question.id)}"></td>
-            <td></td>
+
         </tr>
         </tbody>
     </table>

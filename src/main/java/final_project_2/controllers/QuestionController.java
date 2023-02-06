@@ -1,8 +1,6 @@
 package final_project_2.controllers;
 
-import final_project_2.models.Answer;
 import final_project_2.models.Question;
-import final_project_2.models.Test;
 import final_project_2.repositories.QuestionRepository;
 import final_project_2.services.AnswerService;
 import final_project_2.services.QuestionService;
@@ -72,31 +70,5 @@ public class QuestionController {
         questionService.deleteQuestion(id);
         return "redirect:/question/list";
     }
-
-    //    @GetMapping("/answer/assign/{id}")
-//    public String assignQuestion(@PathVariable(name = "id") Long id, Model model) {
-//        Answer answer = answerService.getAnswer(id);
-//        List<Question> questionList = questionService.getAvailableQuestion();
-//        model.addAttribute("answer", answer);
-//        model.addAttribute("questionList", questionList);
-//        return "assign-question";
-//    }
-
-//    @GetMapping("/question/assign/{id}")
-//    public String assignQuestion(@PathVariable(name = "id") Long id, Model model) {
-//        Answer answer = answerService.getAnswer(id);
-//        List<Question> questionList = questionService.getAvailableQuestion();
-//        model.addAttribute("answer", answer);
-//        model.addAttribute("questionList", questionList);
-//        return "assign-question";
-//    }
-//
-//    @PostMapping("question/assign")
-//    public String saveQuestionAssignment(@RequestParam("answerId") Long answerId, @RequestParam("questionId") Long questionId) {
-//        Question question = questionService.getQuestion(questionId);
-//        question.setAnswer(answerService.getAnswer(answerId));
-//        questionService.saveQuestion(question);
-//        return "redirect:/answer-list";
-//    }
 
 }

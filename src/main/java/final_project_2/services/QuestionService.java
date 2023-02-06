@@ -7,38 +7,35 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 public class QuestionService {
-
     @Autowired
     QuestionRepository questionRepository;
 
+    // The getAllQuestions function gets all the answers by doing a SELECT query in the DB.
     public List<Question> getAllQuestions() {
         return questionRepository.findAll();
     }
 
-
     @Transactional
+    //save function uses an INSERT query in the database
     public Question saveQuestion(Question question) {
         return questionRepository.save(question);
     }
-    List<Question> saveAllQuestion(List<Question> questionList){ return questionRepository.saveAll(questionList); }
 
+    List<Question> saveAllQuestion(List<Question> questionList) {
+        return questionRepository.saveAll(questionList);
+    }
+
+    //The findById function uses a SELECT query with a WHERE clause in the DB.
     public Question getQuestion(Long id) {
         return questionRepository.findById(id)
                 .orElse(null);
     }
 
-//    public List<Question> getAvailableQuestion() {
-//        return getAllQuestions().stream().filter(c -> c.getAnswers() == null)
-//                .collect(Collectors.toList());
-//    }
-
-
+    // The deleteById function deletes the question by doing a DELETE in the DB.
     public void deleteQuestion(Long id) {
         questionRepository.deleteById(id);
     }
-
 }

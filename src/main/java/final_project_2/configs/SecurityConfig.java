@@ -17,17 +17,24 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
+                //CSRF filter is disabled to allow Postman use the application
                 .csrf().disable()
                 .cors().disable()
+                //changing endpoint access settings
                 .authorizeHttpRequests(
                         (requests) -> requests
+                                //guest setting allows access to all users
                                 .antMatchers("/", "/css/**").permitAll()
-                                .antMatchers("/secure").hasAnyAuthority("ADMIN", "USER")
-//                        .antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR")
-//                        .antMatchers("/delete/**").hasAnyAuthority("ADMIN")
+                                //"/registered" can be accessed by users who created an account
+                                .antMatchers("/registered").hasAnyAuthority("USER")
+                                //"ADMIN" can access all endpoints in the application
+                                .antMatchers("/secure", "/registered").hasAnyAuthority("ADMIN")
+                                //any other request will need authentication
                                 .anyRequest().authenticated()
                 )
+                //a form to log in with the default login page is used
                 .formLogin().and()
+                //a form to log out with the default logout page is used
                 .logout();
 
         return http.build();
@@ -40,17 +47,3 @@ public class SecurityConfig {
 
 }
 
-
-
-
-//\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-//    @Bean
-//    public InMemoryUserDetailsManager userDetailsService() {
-//        //this bean creates an in memory repository of users.
-//        //add a user to the cache with username "admin" password "hi" and a ROLE_USER
-//        return new InMemoryUserDetailsManager(
-//                User.builder()
-//                        .username("admin")
-//                        .password(passwordEncoder().encode("hi"))
-//                        .roles("USER").build());
-//    }

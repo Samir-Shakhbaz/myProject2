@@ -1,15 +1,15 @@
 package final_project_2.models;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @NoArgsConstructor
-//@AllArgsConstructor
 @Table(name = "questions")
-//@Builder
 @Getter
 @Setter
 public class Question {
@@ -20,28 +20,24 @@ public class Question {
     private Long id;
     private String name;
 
-//    @OneToOne
-//    @JoinColumn (name = "test_id")
-//    private Test test;
-
     @OneToOne
-    @JoinColumn (name = "correct_answers_id")
+    @JoinColumn(name = "correct_answers_id")
     private CorrectAnswer correctAnswer;
 
+    //here we are creating a one-to-many relationship with 'answer', where 'answer' is parent
     @OneToMany(mappedBy = "question")
     private List<Answer> answers;
 
+    //here we are creating a many-to-ne relationship with 'test', where 'question' is parent
     @ManyToOne(
-//            cascade = CascadeType.ALL,
             optional = true
     )
     private Test test;
 
-
     @Override
-    public String toString() { return (name + " (id-" + id + ")");}
+    public String toString() {
+        return (name + " (id-" + id + ")");
+    }
 
-    //    @OneToMany
-//    private List <Answer> answers;
 }
 

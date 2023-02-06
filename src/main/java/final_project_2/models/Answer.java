@@ -1,9 +1,10 @@
 package final_project_2.models;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -25,13 +26,15 @@ public class Answer {
         this.name = name;
     }
 
-    @ManyToOne (
-//            cascade = CascadeType.ALL,
+    //here we creating a many-to-one relationship with "answer" as a parent
+    @ManyToOne(
             optional = true
     )
     private Question question;
 
     @Override
-    public String toString() { return (name + " (id-" + id + ")");}
+    public String toString() {
+        return (name + " (id-" + id + ")");
+    }
 
 }

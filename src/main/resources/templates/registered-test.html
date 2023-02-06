@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<meta charset="utf-8"/>
+<title>Question Manager</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link th:href="@{/css/style3.css}" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Test Your Java</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a th:href="@{/registered/home}">Home</a></li>
+            <li class="active"><a th:href="@{/registered/tests}">Tests</a></li>
+            <li><a th:href="@{/logout}">Log out</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<body>
+<div align="center">
+    <h1>
+        <span> Test <th:block th:text="${testObject.name}">[name]</th:block> </span>
+    </h1>
+
+    <br/><br/>
+
+    <a th:href="@{/test/tests}">Return to Homepage</a><br/>
+
+    <br>
+    <form action="/registered/answer/submit" method="post">
+
+
+        <div class="container" align="center">
+            <h2>Java Fundamentals</h2>
+            <p>The .table-bordered class adds borders to a table:</p>
+            <table class="table table-bordered">
+
+                <thead>
+                <tr>
+                    <th>Question Id</th>
+                    <th>Question</th>
+                    <th>Answer Id:</th>
+                    <!--            <th>Answer</th>-->
+                </tr>
+                </thead>
+
+                <tbody>
+
+                <tr th:each="question : ${testObject.questions}">
+
+
+                    <td th:text="${question.id}"></td>
+                    <td th:text="${question.name}"></td>
+                    <td>
+
+                        <input type="checkbox" th:each="answer : ${question.answers}"
+                               th:text="${answer.id + ': ' + answer.name}"
+                               th:id="${answer.id}"
+                               th:name="${question.id}"
+                               th:value="${answer.id}" value="HTML"></td>
+
+                </tr>
+                </tbody>
+
+            </table>
+        </div>
+
+        <tr>
+            <td colspan="2"><button type="submit">Submit</button> </td>
+        </tr>
+    </form>
+ <br>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
+</body>
+</html>

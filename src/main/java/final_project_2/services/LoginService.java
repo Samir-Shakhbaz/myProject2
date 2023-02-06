@@ -5,9 +5,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class LoginService {
-
         public User submitUser(User user) {
             return null;
         }
-
     }

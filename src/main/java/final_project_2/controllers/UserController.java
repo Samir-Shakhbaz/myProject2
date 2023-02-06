@@ -1,7 +1,6 @@
 package final_project_2.controllers;
 
 import final_project_2.models.User;
-//import final_project_2.services.TestService;
 import final_project_2.services.NewTestService;
 import final_project_2.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
-//@Transactional
 @Controller
 public class UserController {
 
@@ -55,13 +53,5 @@ public class UserController {
         userService.deleteUser(id);
         return "deleted";
     }
-
-
-
-//    @RequestMapping("/delete/{id}") //FOR ADMINISTRATOR
-//    public String deleteUser(@PathVariable(name = "id") Long id) {
-//        userService.deleteUser(id);
-//        return "redirect:/user-list";
-//    }
 
 }
