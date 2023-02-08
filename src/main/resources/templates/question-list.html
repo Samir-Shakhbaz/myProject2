@@ -6,7 +6,7 @@
     <title>Question Manager</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link th:href="@{/css/style3.css}" rel="stylesheet"/>
+<!--    <link th:href="@{/css/style3.css}" rel="stylesheet"/>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -19,11 +19,12 @@
         </div>
         <ul class="nav navbar-nav">
             <li class="active"><a th:href="@{/test/tests}">Home</a></li>
+            <li><a th:href="@{/test/tests}">Tests</a></li>
             <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
             <li><a th:href="@{/create-account}">Create an account</a></li>
             <li><a th:href="@{/logout}">Log out</a></li>
             <li><a th:href="@{/test/list}">Go to test-list</a></li>
-            <li><a th:href="@{/question/list}">Go to question-list</a></li>
+            <li><a th:href="@{/question/new}">Create new question</a></li>
             <li><a th:href="@{/answer/list}">Go to answer-list</a></li>
         </ul>
     </div>
@@ -36,8 +37,6 @@
 
     <br/><br/>
     <div class="container" align="center">
-<!--        <h2>Java Fundamentals</h2>-->
-<!--        <p>The .table-bordered class adds borders to a table:</p>-->
         <table class="table table-bordered">
         <thead>
         <tr>
@@ -48,7 +47,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="question : ${questionList}">
+        <tr  th:each="question : ${questionList}">
             <td th:text="${question.id}">Question ID</td>
             <td th:text="${question.name}">Test name + (id)</td>
             <td th:text="${question.test}">Test Id</td>

@@ -4,42 +4,26 @@ import final_project_2.configs.Authority;
 import final_project_2.configs.AuthorityEnum;
 import final_project_2.configs.AuthorityRepo;
 import final_project_2.models.User;
-//import final_project_2.services.TestService;
 import final_project_2.repositories.UserRepository;
-import final_project_2.services.NewTestService;
-import final_project_2.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.client.RestTemplateBuilder;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
-import org.springframework.cache.concurrent.ConcurrentMapCache;
-import org.springframework.cache.support.SimpleCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.Arrays;
 import java.util.Collections;
-import java.util.Set;
 
 @SpringBootApplication
 @EnableCaching
 public class FinalProject2Application implements CommandLineRunner {
 
-//    @Autowired
-//    ArticleService articleService;
-
-    @Autowired
-    UserService userService;
-
     @Autowired
     PasswordEncoder passwordEncoder;
-
-    @Autowired
-    NewTestService newTestService;
 
     @Autowired
     AuthorityRepo authorityRepo;
@@ -81,13 +65,13 @@ public class FinalProject2Application implements CommandLineRunner {
         return builder.build();
     }
 
-    @Bean
-    public CacheManager cacheManager() {
-        // configure and return an implementation of Spring's CacheManager SPI
-        SimpleCacheManager cacheManager = new SimpleCacheManager();
-        cacheManager.setCaches(Set.of(new ConcurrentMapCache("default")));
-        return cacheManager;
-    }
+//    @Bean
+//    public CacheManager cacheManager() {
+//        // configure and return an implementation of Spring's CacheManager SPI
+//        SimpleCacheManager cacheManager = new SimpleCacheManager();
+//        cacheManager.setCaches(Set.of(new ConcurrentMapCache("default")));
+//        return cacheManager;
+//    }
 }
 
 

@@ -3,6 +3,7 @@
 //import org.junit.jupiter.api.Test;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+//import org.springframework.boot.test.context.SpringBootTest;
 //import org.springframework.test.context.ContextConfiguration;
 //
 //import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
@@ -13,6 +14,9 @@
 //@ContextConfiguration
 //public class TestControllerTest {
 //
+//    @Autowired
+//    TestController testController;
+//
 //    @Test
 //    public void vewTestList() {
 //    }
@@ -21,13 +25,8 @@
 //    public void saveTest() {
 //    }
 //
-//    @Autowired
-//    TestController testController;
-//
 //    @Test
 //    public void testWebOnlyContextLoads() {
 //        assertThat(testController).isNotNull();
-//
 //    }
-//
 //}

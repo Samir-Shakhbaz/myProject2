@@ -5,7 +5,7 @@
 <title>Question Manager</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link th:href="@{/css/style3.css}" rel="stylesheet"/>
+<!--<link th:href="@{/css/style3.css}" rel="stylesheet"/>-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
@@ -34,17 +34,11 @@
         <span> Test <th:block th:text="${testObject.name}">[name]</th:block> </span>
     </h1>
 
-    <br/><br/>
-
-    <a th:href="@{/test/tests}">Return to Homepage</a><br/>
-
-    <br>
     <form action="/answer/submit" method="post">
 
 
         <div class="container" align="center">
             <h2>Java Fundamentals</h2>
-            <p>The .table-bordered class adds borders to a table:</p>
             <table class="table table-bordered">
 
         <thead>
@@ -64,14 +58,12 @@
                 <td th:text="${question.id}"></td>
                 <td th:text="${question.name}"></td>
                 <td>
-
-                    <input type="radio" th:each="answer : ${question.answers}"
+                        <input type="radio" th:each="answer : ${question.answers}"
                            th:text="${answer.id + ': ' + answer.name}"
                            th:id="${answer.id}"
                            th:name="${question.id}"
                            th:value="${answer.id}" value="HTML"></td>
-
-        </tr>
+          </tr>
         </tbody>
 
             </table>

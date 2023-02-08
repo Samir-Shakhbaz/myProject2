@@ -1,4 +1,4 @@
-package final_project_2;
+package final_project_2.API;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

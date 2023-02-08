@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/answer")
 public class AnswerController {
 
-    //@Autowiered classes allow access to methods in those classes
+    //@Autowired class allow access to methods in those classes
 
     @Autowired
     NewTestService newTestService;
@@ -56,6 +56,7 @@ public class AnswerController {
     }
 
     @GetMapping("/new")
+
     public String ShowNewAnswerPage(Model model) {
         // New answer is created, it's empty
         Answer answer = new Answer();
@@ -154,20 +155,14 @@ public class AnswerController {
                 if (addToScore) {
                     userScore++;
                 }
-
-
                 System.out.println("hello " + questionId + "-" + answer.getId());
-
-
                 System.out.println("THE USER'S SCORE IS A LOT: " + userScore);
             }
-
-
             System.out.println(questionId + ": " + ok + ", wrong: " + wrong);
 
         }
 
-        Test test = newTestService.getTest(testId); // == new Test(1l, "Test 1", questions())
+        Test test = newTestService.getTest(testId);
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!principal.toString().equals("anonymousUser")){
             User user = (User) principal;

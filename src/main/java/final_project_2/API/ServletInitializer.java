@@ -1,4 +1,4 @@
-package final_project_2;
+package final_project_2.API;
 
 import final_project_2.FinalProject2Application;
 import org.springframework.boot.builder.SpringApplicationBuilder;

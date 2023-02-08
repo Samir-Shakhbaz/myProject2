@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-<meta charset="utf-8"/>
-<title>Homepage</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<link th:href="@{/css/style3.css}" rel="stylesheet"/>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <meta charset="utf-8"/>
+    <title>Homepage</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!--<link th:href="@{/css/style3.css}" rel="stylesheet"/>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -31,23 +31,29 @@
 </nav>
 
 <div align="center">
-  <h1>
-      Hello and welcome to the Java test page
-  </h1>
+    <h1>
+        Hello and welcome to the Java test page
+    </h1>
 
-<!--    <th:block th:unless="${articleList.isEmpty()}">-->
-<!--        <div class="row justify-content-center">-->
-<!--            <div class="col-auto" th:each="article: ${articleList}">-->
-<!--                <div class="card" style="width: 18rem; height: 34rem;">-->
-<!--                    <img th:unless="${article.imageUrl == null}" th:src="${article.imageUrl}" class="card-img-top">-->
-<!--                    <div class="card-body">-->
-<!--                        <h5 class="card-title" th:text="${article.title}">title</h5>-->
-<!--                        <p class="card-text" th:text="${article.summary}">summary</p>-->
-<!--                        <a th:href="${article.url}" class="btn btn-primary">Read More..</a>-->
+    <div class="container">
+        <div class="bg-light p-4 rounded m-2">
+<!--            <th:block th:unless="${articleList.isEmpty()}">-->
+                <th:block th:if="${article != null}">
+                <div class="row justify-content-center">
+<!--                    <div class="col-auto" th:each="article: ${articleList}">-->
+                        <div class="card" style="width: 18rem; height: 34rem;">
+                            <img th:unless="${article.imageUrl == null}" th:src="${article.imageUrl}"
+                                 class="card-img-top">
+                            <div class="card-body">
+                                <h5 class="card-title" th:text="${article.title}">title</h5>
+                                <p class="card-text" th:text="${article.summary}">summary</p>
+                                <a th:href="${article.url}" class="btn btn-primary">Read More..</a>
+                            </div>
+                        </div>
 <!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </th:block>-->
+                </div>
+            </th:block>
+        </div>
+    </div>
 
 </html>
