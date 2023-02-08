@@ -22,7 +22,7 @@ public class ArticleService {
     RestTemplate restTemplate;
 
     public List<Article> getMostPopular(){
-//        Map<String, String> mapMy = new HashMap<>();
+//   //     Map<String, String> mapMy = new HashMap<>();
 //        mapMy.put("api-key", apikey);
 //        NytResponse response = restTemplate.getForObject(mostPopularUrl, NytResponse.class, mapMy);
         NytResponse response = restTemplate.getForObject(mostPopularUrl + "api-key=" + apikey, NytResponse.class);
