@@ -7,15 +7,12 @@ import final_project_2.models.User;
 import final_project_2.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,7 +23,7 @@ import java.util.List;
 //@Component
 @RequiredArgsConstructor
 @Transactional(readOnly = true)
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     AuthorityRepo authorityRepo;
 
@@ -65,7 +62,9 @@ public class UserServiceImpl implements UserService{
     @Transactional
     @CacheEvict(value = "users", allEntries = true)
     // The deleteById function deletes the question by doing a DELETE in the DB.
-    public void deleteUser(Long id) { userRepository.deleteById(id); }
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {

@@ -42,7 +42,7 @@ public class TestController {
     public String vewTestList(@NotNull Model model) {
         final List<Test> testList = newTestService.getAllTests();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!principal.toString().equals("anonymousUser")){
+        if (!principal.toString().equals("anonymousUser")) {
             User user = (User) principal;
             model.addAttribute("isAdmin", user.isAdmin());
         } else {
@@ -125,7 +125,7 @@ public class TestController {
     public String getTestsPage(Model model) {
         List<Test> tests = newTestService.getAllTests();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!principal.toString().equals("anonymousUser")){
+        if (!principal.toString().equals("anonymousUser")) {
             User user = (User) principal;
             System.out.println(user);
             System.out.println(user.isAdmin());
@@ -142,7 +142,7 @@ public class TestController {
     public String getTestPage(Model model, @PathVariable Long id) {
         Test test = newTestService.getTest(id); // == new Test(1l, "Test 1", questions())
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!principal.toString().equals("anonymousUser")){
+        if (!principal.toString().equals("anonymousUser")) {
             User user = (User) principal;
 //            System.out.println(user);
 //            System.out.println(user.isAdmin());

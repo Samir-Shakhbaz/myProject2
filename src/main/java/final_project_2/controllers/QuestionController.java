@@ -70,5 +70,4 @@ public class QuestionController {
         questionService.deleteQuestion(id);
         return "redirect:/question/list";
     }
-
 }

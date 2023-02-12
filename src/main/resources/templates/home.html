@@ -9,7 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body style="background-color:#EDF1FF">
 
 <nav class="navbar navbar-default">
     <div class="container-fluid">
@@ -25,7 +25,7 @@
             <li th:if="${isAdmin}"><a th:href="@{/test/list}">Go to test-list</a></li>
             <li th:if="${isAdmin}"><a th:href="@{/question/list}">Go to question-list</a></li>
             <li th:if="${isAdmin}"><a th:href="@{/answer/list}">Go to answer-list</a></li>
-            <li><a th:href="@{/secure/about}">About</a></li>
+            <li><a th:href="@{/about}">About</a></li>
         </ul>
     </div>
 </nav>
@@ -35,19 +35,36 @@
         Hello and welcome to the Java test page
     </h1>
 
-    <div class="container">
+    </br>
+    </br>
+    <h4>
+        Please, click create an account to get access to tests.
+        <p>You'll be asked for a login and password.</p>
+        <p>Insert:</p>
+        <p>password: guest</p>
+        <p>login: guest</p>
+    </h4>
+
+</div>
+</br>
+</br>
+
+
+<h2 align="center">Check out cool article about Java from The New York Times</h2>
+
+    <div class="container" align="center">
         <div class="bg-light p-4 rounded m-2">
 <!--            <th:block th:unless="${articleList.isEmpty()}">-->
-                <th:block th:if="${article != null}">
+                <th:block th:if="${searchArticle != null}">
                 <div class="row justify-content-center">
 <!--                    <div class="col-auto" th:each="article: ${articleList}">-->
                         <div class="card" style="width: 18rem; height: 34rem;">
-                            <img th:unless="${article.imageUrl == null}" th:src="${article.imageUrl}"
-                                 class="card-img-top">
+<!--                            <img th:unless="${article.imageUrl == null}" th:src="${article.imageUrl}"-->
+<!--                                 class="card-img-top">-->
                             <div class="card-body">
-                                <h5 class="card-title" th:text="${article.title}">title</h5>
-                                <p class="card-text" th:text="${article.summary}">summary</p>
-                                <a th:href="${article.url}" class="btn btn-primary">Read More..</a>
+                                <h5 class="card-title" th:text="${searchArticle.leadParagraph}">title</h5>
+<!--                                <p class="card-text" th:text="${article.summary}">summary</p>-->
+                                <a th:href="${searchArticle.web_url}" class="btn btn-primary">Read More..</a>
                             </div>
                         </div>
 <!--                    </div>-->
@@ -55,5 +72,5 @@
             </th:block>
         </div>
     </div>
-
+</body>
 </html>

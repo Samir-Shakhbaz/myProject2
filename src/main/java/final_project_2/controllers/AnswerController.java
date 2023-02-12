@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 @Component
 //all endpoints in this class begin with "/answer"
 @RequestMapping("/answer")
+
 public class AnswerController {
 
     //@Autowired class allow access to methods in those classes
@@ -36,6 +37,7 @@ public class AnswerController {
 
     @Autowired
     QuestionService questionService;
+
 
     @PostMapping(value = "/save")
     // here Model is received back from the view
@@ -60,7 +62,7 @@ public class AnswerController {
     public String ShowNewAnswerPage(Model model) {
         // New answer is created, it's empty
         Answer answer = new Answer();
-        //Here it is put in model and sent to the view
+        //Here it is put in the model and sent to the view
         model.addAttribute("answer", answer);
         return "new-answer";
     }
@@ -88,6 +90,7 @@ public class AnswerController {
         answerService.saveAnswer(answer);
         return "redirect:/answer/list";
     }
+
 
     @RequestMapping("/delete/{id}")
     // The path variable "id" is used to pull an answer from the DB
@@ -132,7 +135,6 @@ public class AnswerController {
                     userAnswers.put(question.getId(), answer);
                 }
 
-
                 //if the answer is correct and the box was checked, the answer is correct and it's added to the correct answers list
                 if (answer.isCorrect()) {
                     correctAnswers.put(question.getId(), answer);
@@ -164,10 +166,8 @@ public class AnswerController {
 
         Test test = newTestService.getTest(testId);
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!principal.toString().equals("anonymousUser")){
+        if (!principal.toString().equals("anonymousUser")) {
             User user = (User) principal;
-//            System.out.println(user);
-//            System.out.println(user.isAdmin());
             model.addAttribute("isAdmin", user.isAdmin());
         } else {
             model.addAttribute("isAdmin", false);
@@ -179,7 +179,6 @@ public class AnswerController {
 
         return "answers";
     }
-
 
     @GetMapping("/question/assign/{id}")
     // The path variable "id" is used to pull the answer from the DB
@@ -214,6 +213,5 @@ public class AnswerController {
         answerService.saveAnswer(answer);
         return "redirect:/answer/list";
     }
-
 }
 

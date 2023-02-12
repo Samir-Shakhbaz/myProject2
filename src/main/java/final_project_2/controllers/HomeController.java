@@ -5,6 +5,7 @@ import final_project_2.models.Test;
 import final_project_2.models.User;
 import final_project_2.services.NewTestService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,9 +27,24 @@ public class HomeController {
         return "Hello and welcome!";
     }
 
+    @GetMapping("/about")
+    public String about() {
+
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        authentication.getAuthorities();
+        System.out.println(authentication);
+
+        return "about";
+    }
+
     @GetMapping("/login")
     public String login() {
         return "login";
+    }
+
+    @GetMapping("/login?logout")
+    public String logout() {
+        return "home";
     }
 
 
@@ -42,7 +58,7 @@ public class HomeController {
     @GetMapping("/")
     public String vewHomePageGuest(Model model) {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        if (!principal.toString().equals("anonymousUser")){
+        if (!principal.toString().equals("anonymousUser")) {
             User user = (User) principal;
             model.addAttribute("isAdmin", user.isAdmin());
         } else {
@@ -51,9 +67,7 @@ public class HomeController {
 
         final List<Test> testList = newTestService.getAllTests();
         model.addAttribute("testList", testList);
-//        model.addAttribute("articleList", articleService.getMostPopular());
-        model.addAttribute("article", articleService.getMostPopular().get(0));
+        model.addAttribute("searchArticle", articleService.getSearchJava().get(0));
         return "home";
     }
-
 }

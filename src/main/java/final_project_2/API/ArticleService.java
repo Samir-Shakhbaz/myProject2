@@ -14,29 +14,26 @@ public class ArticleService {
 
     @Value("${api_key}")
     private String apikey;
-
-    @Value("${mostPopularUrl}")
-    private String mostPopularUrl;
+    @Value("${articleSearchUrl}")
+    private String articleSearchUrl;
 
     @Autowired
     RestTemplate restTemplate;
 
-    public List<Article> getMostPopular(){
-//   //     Map<String, String> mapMy = new HashMap<>();
-//        mapMy.put("api-key", apikey);
-//        NytResponse response = restTemplate.getForObject(mostPopularUrl, NytResponse.class, mapMy);
-        NytResponse response = restTemplate.getForObject(mostPopularUrl + "api-key=" + apikey, NytResponse.class);
-//        response.getResults().forEach(article -> {
-//           if(article.getMedia().size()>0) article.setImageUrl(article.getMedia().get(0).getMediaMetadata().get(0).getUrl());
-//        });
-        for(Article article: response.getResults()){
-            if(article.getMedia().size()>0) article.setImageUrl(article.getMedia().get(0).getMediaMetadata().get(0).getUrl());
+
+    public List<Docs> getSearchJava() {
+
+        ArticleStatus articleStatus = restTemplate.getForObject(articleSearchUrl + "q=computers@java" + "&api-key=" + apikey, ArticleStatus.class);
+        System.out.println(articleStatus);
+
+        List<Docs> results = new ArrayList<>();
+        if (articleStatus != null && articleStatus.getStatus().equals("OK")) {
+            for (Docs docs : articleStatus.getResponse().getDocs()) {
+                results.add(docs);
+            }
         }
-        List<Article> results = new ArrayList<>();
-        if (response != null && response.getStatus().equals("OK")) {
-            return response.getResults();
-        } else {
-            return results;
-        }
+        return results;
+
     }
+
 }

@@ -19,12 +19,10 @@ public class LoginController {
     }
 
     @PostMapping(value = "/submit")
-    // As the Model is received back from the view, @ModelAttribute
-    // creates a Customer based on the object you collected from
-    // the HTML page above
+    //here the Model is received back from the view, @ModelAttribute
+    // new user based on the object we collected from the HTML page above
     public String submitUser(@ModelAttribute("user") User user) {
         loginService.submitUser(user);
         return "redirect:/";
     }
-
 }

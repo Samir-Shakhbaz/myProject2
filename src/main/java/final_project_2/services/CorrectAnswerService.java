@@ -1,8 +1,6 @@
 package final_project_2.services;
 
-import final_project_2.models.Answer;
 import final_project_2.models.CorrectAnswer;
-import final_project_2.repositories.AnswerRepository;
 import final_project_2.repositories.CorrectAnswerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,9 +21,10 @@ public class CorrectAnswerService {
         return correctAnswerRepository.findAll();
     }
 
-
     @Transactional
-    public CorrectAnswer saveCorrectAnswer(CorrectAnswer correctAnswer) { return correctAnswerRepository.save(correctAnswer); }
+    public CorrectAnswer saveCorrectAnswer(CorrectAnswer correctAnswer) {
+        return correctAnswerRepository.save(correctAnswer);
+    }
 
     public CorrectAnswerService() {
         List<CorrectAnswer> list = new ArrayList<>();
@@ -41,5 +40,4 @@ public class CorrectAnswerService {
     public void deleteCorrectAnswer(Long id) {
         correctAnswerRepository.deleteById(id);
     }
-
 }

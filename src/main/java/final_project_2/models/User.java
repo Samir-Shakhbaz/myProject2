@@ -24,7 +24,6 @@ public class User implements UserDetails {
     private String name;
     private String password;
 
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_authority_join_table",
             joinColumns = @JoinColumn(name = "user_id"),

@@ -24,9 +24,8 @@ public class CorrectAnswer {
         this.name = name;
     }
 
-    @OneToOne(mappedBy="correctAnswer")
+    @OneToOne(mappedBy = "correctAnswer")
     private Question question;
-
 
 
 }
