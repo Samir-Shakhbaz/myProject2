@@ -24,7 +24,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         (requests) -> requests
                                 //guest setting allows access to all users
-                                .antMatchers("/", "/css/**").permitAll()
+                                .antMatchers("/", "/css/**","/create-account","/save").permitAll()
                                 //"/registered" can be accessed by users who created an account
                                 .antMatchers("/registered").hasAnyAuthority("USER")
                                 //"ADMIN" can access all endpoints in the application

@@ -3,16 +3,18 @@ package final_project_2.controllers;
 import final_project_2.models.User;
 import final_project_2.services.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
 public class LoginController {
 
     @Autowired
-    private final LoginService loginService;
+    LoginService loginService;
 
     public LoginController(LoginService loginService) {
         this.loginService = loginService; //WHY DO ME NEED THIS?

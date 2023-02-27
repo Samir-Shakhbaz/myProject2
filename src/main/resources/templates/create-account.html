@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
     <title>Create New Account</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body style="background-color:#EDF1FF">
 <div align="center">
     <h1>Create New Account</h1>
-    <br />
+    <br/>
     <!--
     Here is the form that will be used to save the new user.
     The form is tied to the User object added to the model,
@@ -34,7 +34,6 @@
             <tr>
                 <td colspan="2"><button type="save">Save</button> </td>
             </tr>
-
         </table>
     </form>
 </div>

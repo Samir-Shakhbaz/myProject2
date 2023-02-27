@@ -1,13 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
-    <title>Question Manager</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<!--    <link th:href="@{/css/style.css}" rel="stylesheet"/>-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>Test Manager</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body style="background-color:#EDF1FF">
 
@@ -25,7 +22,12 @@
             <li th:if="${isAdmin}"><a th:href="@{/question/list}">Go to question-list</a></li>
             <li th:if="${isAdmin}"><a th:href="@{/answer/list}">Go to answer-list</a></li>
             <li th:if="${isAdmin}"><a th:href="@{/about}">About</a></li>
+            <li sec:authorize="hasRole('ROLE_ADMIN')"><a th:href="@{/about}">About2</a></li>
+            <li sec:authorize="isAuthenticated()"><a th:href="@{/about}">About3</a></li>
+
         </ul>
+
+        <h1 sec:authorize="hasRole('ROLE_ADMIN')">Hello Admin</h1>
     </div>
 </nav>
 

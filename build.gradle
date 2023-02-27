@@ -33,10 +33,22 @@ dependencies {
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis'
+//	// https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf
+//	implementation group: 'org.thymeleaf', name: 'thymeleaf', version: '2.0.5'
+//	// https://mvnrepository.com/artifact/org.thymeleaf/thymeleaf-spring5
+//	implementation group: 'org.thymeleaf', name: 'thymeleaf-spring5', version: '3.1.1.RELEASE'
+
+
 
 //	SECURITY-SECURITY-SECURITY
 //	compile 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-security'
+
+	implementation 'org.springframework.security:spring-security-test'
+
+	// https://mvnrepository.com/artifact/com.shedhack.exception/exception-controller-spring
+	implementation group: 'com.shedhack.exception', name: 'exception-controller-spring', version: '2.2.0'
+
 
 	// https://mvnrepository.com/artifact/junit/junit
 //	testImplementation group: 'junit', name: 'junit', version: '4.13.2'
@@ -52,7 +64,13 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+
 dependencies {
+
+
+	implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'com.shedhack.exception:exception-controller-spring:2.2.0'
+	implementation 'com.github.vikram1992:rest-api-global-exception-handling:0.0.4'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 test {

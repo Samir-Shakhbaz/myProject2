@@ -1,9 +1,6 @@
 package final_project_2.controllers;
 
-import final_project_2.models.Answer;
-import final_project_2.models.Question;
-import final_project_2.models.Test;
-import final_project_2.models.User;
+import final_project_2.models.*;
 import final_project_2.services.AnswerService;
 import final_project_2.services.NewTestService;
 import final_project_2.services.QuestionService;
@@ -43,8 +40,8 @@ public class AnswerController {
     // here Model is received back from the view
     // then @ModelAttribute creates an answer based on the object
     // that was collected from the HTML page above
-    public String saveAnswer(@ModelAttribute("answer") Answer answer) {
-        answerService.saveAnswer(answer);
+    public String saveAnswer(@ModelAttribute("answers") AnswersDTO answers) {
+        answerService.saveAnswers(answers.getAnswers());
         return "redirect:/answer/list";
     }
 
@@ -65,6 +62,27 @@ public class AnswerController {
         //Here it is put in the model and sent to the view
         model.addAttribute("answer", answer);
         return "new-answer";
+    }
+
+    @GetMapping("/anew")
+    public String showANewQuestionPage(Model model) {
+        AnswersDTO answers = new AnswersDTO();
+        Answer answer = new Answer();
+        Answer answer2 = new Answer();
+        Answer answer3 = new Answer();
+        Answer answer4 = new Answer();
+        answers.setAnswers(new ArrayList<>());
+        answers.getAnswers().add(answer);
+        answers.getAnswers().add(answer2);
+        answers.getAnswers().add(answer3);
+        answers.getAnswers().add(answer4);
+//        model.addAttribute("question", question);
+//        model.addAttribute("answer", answer);
+//        model.addAttribute("answer2", answer2);
+//        model.addAttribute("answer3", answer3);
+//        model.addAttribute("answer4", answer4);
+        model.addAttribute("answers", answers);
+        return "a-new-answer";
     }
 
     @GetMapping("/edit/{id}")
@@ -111,7 +129,7 @@ public class AnswerController {
                 .map(Long::parseLong)
                 .collect(Collectors.toSet());
 
-        //creating hasmaps of all user answers and those that he answered correctly
+        //creating hashmaps of all user answers and those that he answered correctly
         Map<Long, Answer> userAnswers = new HashMap<>();
         Map<Long, Answer> correctAnswers = new HashMap<>();
 

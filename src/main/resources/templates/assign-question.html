@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8" />
     <title>Question Assignment</title>
+    <div th:replace="fragments :: header"/>
 </head>
 <body style="background-color:#EDF1FF" >
+<div th:replace="fragments :: navigation"/>
 <div align="center">
     <h1>Assign Question to Answer</h1>
     <a th:href="@{/answer/list}">Answer List</a>

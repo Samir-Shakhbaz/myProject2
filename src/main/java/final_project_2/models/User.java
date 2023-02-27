@@ -84,7 +84,7 @@ public class User implements UserDetails {
         return name;
     }
 
-    public boolean isAdmin() {
+    public boolean isAdmin() throws NullPointerException {
         for (Authority authority : authorities) {
             if (authority.getAuthority().equals(AuthorityEnum.ROLE_ADMIN.name())) {
                 return true;
@@ -92,4 +92,14 @@ public class User implements UserDetails {
         }
         return false;
     }
+
+//    public boolean isUser() throws NullPointerException {
+//        for (Authority authority : authorities) {
+//            if (authority.getAuthority().equals(AuthorityEnum.ROLE_USER.name())) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
+
 }

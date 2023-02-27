@@ -24,6 +24,12 @@ public class AnswerService {
 
     @Transactional
     //save function uses an INSERT query in the DB
+    public List <Answer> saveAnswers(List<Answer> answers) {
+        return answerRepository.saveAll(answers);
+    }
+
+    @Transactional
+    //save function uses an INSERT query in the DB
     public Answer saveAnswer(Answer answer) {
         return answerRepository.save(answer);
     }

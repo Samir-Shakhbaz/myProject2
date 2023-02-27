@@ -1,42 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-  <meta charset="utf-8"/>
   <title>Answer Manager</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <div th:replace="fragments :: header"/>
 </head>
 <body style="background-color:#EDF1FF">
+  <div th:replace="fragments :: navigation"></div>
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Test Your Java</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a th:href="@{/test/tests}">Home</a></li>
-      <li><a th:href="@{/test/tests}">Tests</a></li>
-      <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
-      <li><a th:href="@{/create-account}">Create an account</a></li>
-      <li><a th:href="@{/logout}">Log out</a></li>
-      <li><a th:href="@{/test/list}">Go to test-list</a></li>
-      <li><a th:href="@{/question/list}">Go to question-list</a></li>
-      <li><a th:href="@{/answer/new}">Create new answer</a></li>
-    </ul>
-  </div>
-</nav>
-
-<body>
-<div class="container">
+  <div class="container">
   <h2>Answer list</h2>
   <table class="table table-bordered">
     <thead>
     <tr>
       <th>Answer ID</th>
       <th>Answer Name</th>
+      <th>Correct (true/false)</th>
       <th>Question name + (id)</th>
       <th>Actions</th>
     </tr>
@@ -45,6 +23,7 @@
     <tr th:each="answer : ${answerList}">
       <td th:text="${answer.id}">Answer ID</td>
       <td th:text="${answer.name}">Answer Name</td>
+      <td th:text="${answer.correct}">Correct (true/false)</td>
       <td th:text="${answer.question}">Question name + (id)</td>
       <td>    <!-- actions -->
         <a th:href="@{'/answer/edit/' + ${answer.id}}">Edit</a>

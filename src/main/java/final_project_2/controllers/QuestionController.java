@@ -1,10 +1,14 @@
 package final_project_2.controllers;
 
+import final_project_2.exceptions.NoSuchQuestionException;
+import final_project_2.models.Answer;
 import final_project_2.models.Question;
 import final_project_2.repositories.QuestionRepository;
 import final_project_2.services.AnswerService;
 import final_project_2.services.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +36,15 @@ public class QuestionController {
         return "new-question";
     }
 
+    @GetMapping("/anew")
+    public String showANewQuestionPage(Model model) {
+        Question question = new Question();
+//        Answer answer = new Answer();
+        model.addAttribute("question", question);
+//        model.addAttribute("answer", answer);
+        return "a-new-question";
+    }
+
     @PostMapping(value = "/save")
     public String saveQuestion(@ModelAttribute("question") Question question) {
         questionService.saveQuestion(question);
@@ -44,6 +57,16 @@ public class QuestionController {
         model.addAttribute("questionList", questionList);
         return "question-list";
     }
+
+//    @GetMapping
+//    public ResponseEntity<?> getAllQuestions() {
+//        try {
+//            return ResponseEntity.ok(questionService.getAllQuestions());
+//        }catch (NoSuchQuestionException e) {
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+//        }
+//    }
+
 
     @GetMapping("/edit/{id}")
     public ModelAndView showEditQuestionPage(@PathVariable(name = "id") Long id) {

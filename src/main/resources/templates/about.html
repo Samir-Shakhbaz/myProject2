@@ -1,38 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="utf-8"/>
     <title>About</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <div th:replace="fragments :: header"/>
 </head>
-<body style="background-color:#F5E279">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Test Your Java</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/test/tests}">Home</a></li>
-            <li class="active"><a th:href="@{/test/tests}">Tests</a></li>
-            <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
-            <li><a th:href="@{/create-account}">Create an account</a></li>
-            <li><a th:href="@{/logout}">Log out</a></li>
-            <li><a th:href="@{/test/list}">Go to test-list</a></li>
-            <li><a th:href="@{/question/list}">Go to question-list</a></li>
-            <li><a th:href="@{/answer/list}">Go to answer-list</a></li>
-        </ul>
-    </div>
-</nav>
+<body style="background-color:#EDF1FF">
 
+<div th:replace="fragments :: navigation"></div>
 
-  <h4>What a great site!</h4>
+<div align="center">
 
+  <h2 style="text-align: center;">About</h2>
 
-<body>
+    <p style="text-align: center;">Originally this project was created to help the students
+    <p style="text-align: center;">studying Java at Coding Nomads (https://codingnomads.co/)
+    <p style="text-align: center;">online bootcamp and programming courses. The project creates
+    <p style="text-align: center;">multiple choice tests on Java Fundamentals, and it is aimed at
+    <p style="text-align: center;">beginners who want to learn a new coding language. This project
+    <p style="text-align: center;">could be of interest to students, coding enthusiasts, as well as
+    <p style="text-align: center;">professionals involved in teaching.</p>
+
+</div>
 
 </body>
 </html>

@@ -23,7 +23,7 @@ public class ArticleService {
 
     public List<Docs> getSearchJava() {
 
-        ArticleStatus articleStatus = restTemplate.getForObject(articleSearchUrl + "q=computers@java" + "&api-key=" + apikey, ArticleStatus.class);
+        ArticleStatus articleStatus = restTemplate.getForObject(articleSearchUrl + "q=computers&java" + "&api-key=" + apikey, ArticleStatus.class);
         System.out.println(articleStatus);
 
         List<Docs> results = new ArrayList<>();

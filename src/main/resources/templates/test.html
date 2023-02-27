@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<meta charset="utf-8"/>
-<title>Question Manager</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<head>
+    <title>Question Manager</title>
+    <div th:replace="fragments :: header"/>
 <!--<link th:href="@{/css/style3.css}" rel="stylesheet"/>-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body style="background-color:#EDF1FF">
 
@@ -17,7 +14,7 @@
             <a class="navbar-brand" href="#">Test Your Java</a>
         </div>
         <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/test/tests}">Home</a></li>
+            <li class="active"><a th:href="@{/}">Home</a></li>
             <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
             <li th:if="${isAdmin}"><a th:href="@{/create-account}">Create an account</a></li>
             <li><a th:href="@{/logout}">Log out</a></li>

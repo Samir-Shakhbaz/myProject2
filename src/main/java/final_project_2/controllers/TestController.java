@@ -39,7 +39,7 @@ public class TestController {
     }
 
     @GetMapping("/list")
-    public String vewTestList(@NotNull Model model) {
+    public String vewTestList(@NotNull Model model) throws Exception {
         final List<Test> testList = newTestService.getAllTests();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!principal.toString().equals("anonymousUser")) {
@@ -55,7 +55,7 @@ public class TestController {
     @PostMapping("/save")
     public String saveTest(@ModelAttribute("test") Test test) {
         newTestService.saveTest(test);
-        return "redirect:/test-list";
+        return "redirect:/test/list";
     }
 
     @GetMapping("/new")
@@ -82,13 +82,13 @@ public class TestController {
             return "error-page";
         }
         newTestService.saveTest(test);
-        return "redirect:/test-list";
+        return "redirect:/test/list";
     }
 
     @RequestMapping("/delete/{id}")
     public String deleteTest(@PathVariable(name = "id") Long id) {
         newTestService.deleteTest(id);
-        return "redirect:/test-list";
+        return "redirect:/test/list";
     }
 
     @GetMapping("/assign/{id}")
@@ -122,7 +122,7 @@ public class TestController {
     }
 
     @GetMapping("/tests")
-    public String getTestsPage(Model model) {
+    public String getTestsPage(Model model) throws Exception {
         List<Test> tests = newTestService.getAllTests();
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!principal.toString().equals("anonymousUser")) {
@@ -139,7 +139,7 @@ public class TestController {
     }
 
     @GetMapping("/tests/{id}")
-    public String getTestPage(Model model, @PathVariable Long id) {
+    public String getTestPage(Model model, @PathVariable Long id) throws Exception {
         Test test = newTestService.getTest(id); // == new Test(1l, "Test 1", questions())
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!principal.toString().equals("anonymousUser")) {

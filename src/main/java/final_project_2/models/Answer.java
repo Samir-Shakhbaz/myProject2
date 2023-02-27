@@ -1,15 +1,14 @@
 package final_project_2.models;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "answers")
-//@Builder
+@Builder
 @Getter
 @Setter
 public class Answer {

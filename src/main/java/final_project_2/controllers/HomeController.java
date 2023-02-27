@@ -22,17 +22,25 @@ public class HomeController {
     @Autowired
     NewTestService newTestService;
 
-    @GetMapping("/hello")
-    public String greeting() {
-        return "Hello and welcome!";
-    }
+//    @GetMapping("/hello")
+//    public String greeting() {
+//        return "Hello and welcome!";
+//    }
 
     @GetMapping("/about")
-    public String about() {
+    public String about(Model model) throws Exception {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         authentication.getAuthorities();
         System.out.println(authentication);
+//        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        if (!principal.toString().equals("anonymousUser")) {
+//            User user = (User) principal;
+//            model.addAttribute("isAdmin", user.isAdmin());
+//        } else {
+//            model.addAttribute("isAdmin", false);
+//        }
+
 
         return "about";
     }
@@ -56,7 +64,7 @@ public class HomeController {
     }
 
     @GetMapping("/")
-    public String vewHomePageGuest(Model model) {
+    public String viewHomePageGuest(Model model) throws Exception {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!principal.toString().equals("anonymousUser")) {
             User user = (User) principal;

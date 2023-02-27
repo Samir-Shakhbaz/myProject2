@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title>Error</title>
+  <div th:replace="fragments :: header"/>
+  <!--<link th:href="@{/css/style3.css}" rel="stylesheet"/>-->
+</head>
+
+<div align="center">
+<h1>Something went wrong</h1>
+
+</br>
+
+<body>
+<div class="container" align="center">
+<table class="table table-bordered">
+
+  <tr>
+    <h3>
+    <p>The link you are trying to access can't be reached at the moment.</p>
+    <p>Make sure that the address is correct and try again.</p>
+    <p>If it doesn't help, please, contact IT engineers.</p>
+  </h3>
+    </tr>
+
+<h1 id="emoji">🤔 </h1>
+
+
+<!--  <tr><td>Error Message</td><td th:text="${message}"></td></tr>-->
+<!--  <tr><td>Status Code</td><td th:text="${status}"></td></tr>-->
+<!--  <tr><td>Exception</td><td th:text="${exception}"></td></tr>-->
+<!--  <tr><td>Stacktrace</td><td><pre th:text="${trace}"></pre></td></tr>-->
+<!--  <tr><td>Binding Errors</td><td th:text="${errors}"></td></tr>-->
+</table>
+
+  <a th:href="@{/}">Return Home</a>
+
+</div>
+</body>
+</div>
+</html>
