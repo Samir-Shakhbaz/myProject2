@@ -1,28 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Create New Test</title>
     <div th:replace="fragments :: header"/>
 </head>
+
 <body style="background-color:#EDF1FF">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Test Your Java</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/test/tests}">Home</a></li>
-            <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
-            <li><a th:href="@{/create-account}">Create an account</a></li>
-            <li><a th:href="@{/logout}">Log out</a></li>
-            <li><a th:href="@{/test/list}">Go to test-list</a></li>
-            <li><a th:href="@{/question/list}">Go to question-list</a></li>
-            <li><a th:href="@{/answer/list}">Go to answer-list</a></li>
-        </ul>
-    </div>
-</nav>
+<div th:replace="fragments :: navigation"></div>
 
 
 <body>
@@ -30,18 +16,12 @@
         <h1>Create New Test</h1>
     <br />
         <form action="#" th:action="@{/test/save}" th:object="${test}" method="post">
-
             <table border="0" cellpadding="10">
-<!--                <tr>-->
-<!--                    <td>Test id:</td>-->
-<!--                    <td><input type="text" th:field="*{id}" required/></td>-->
-<!--                </tr>-->
                 <tr>
                     <td>Test Name:</td>
                     <td><input type="text" th:field="*{name}" required/></td>
                 </tr>
             </table>
-
                 </br></br>
                 <tr>
                     <td colspan="2" align="center"><button type="save">Save</button> </td>

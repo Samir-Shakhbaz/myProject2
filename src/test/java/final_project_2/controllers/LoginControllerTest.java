@@ -2,6 +2,7 @@ package final_project_2.controllers;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import final_project_2.FinalProject2Application;
 import final_project_2.configs.Authority;
 import final_project_2.configs.AuthorityEnum;
 import final_project_2.configs.AuthorityRepo;
@@ -43,18 +44,12 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @WebMvcTest(LoginController.class)
+@ContextConfiguration(classes = FinalProject2Application.class)
 @Import(SecurityConfig.class)
-//@WithMockUser
-//@ExtendWith(SpringExtension.class)
-//@ContextConfiguration(classes = SecurityConfig.class)
-//@WebAppConfiguration
 class LoginControllerTest {
 
     @Autowired
     MockMvc mockMvc;
-
-//    @Autowired
-//    SecurityConfig securityConfig;
 
     @MockBean
     NewTestService newTestService;
@@ -68,23 +63,8 @@ class LoginControllerTest {
     @MockBean
     UserRepository userRepository;
 
-//    @MockBean
-//    LoginService loginService;
-
     @MockBean
     RestTemplateBuilder restTemplateBuilder;
-
-//    @Mock
-//    PasswordEncoder passwordEncoder;
-
-//    @Autowired
-//    ObjectMapper objectMapper;
-
-//    @Autowired
-//    LoginController loginController;
-
-//    @Autowired
-//    AnswerController answerController;
 
     @MockBean
     AnswerService answerService;
@@ -95,31 +75,12 @@ class LoginControllerTest {
     @MockBean
     LoginService loginService;
 
-//    @Autowired
-//    private WebApplicationContext context;
-//
-//    @BeforeEach
-//    public void setup() {
-//        mockMvc = MockMvcBuilders
-//                .webAppContextSetup(context)
-//                .apply(springSecurity())
-//                .build();
-//    }
-
     @Test
     public void testController() throws Exception {
         User user = new User("user", "user", Collections.singletonList(Authority.builder()
                         .authority(AuthorityEnum.ROLE_USER)
                         .build()));
 
-//                r()
-//                .name("name")
-//                .authorities(Collections.singletonList(Authority.builder()
-//                        .authority(AuthorityEnum.ROLE_USER)
-//                        .build()))
-//                .build();
-
-//        assertThat(loginController).isNotNull();
         mockMvc.perform(post("/submit")
                         .with(user(user))
                         .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))

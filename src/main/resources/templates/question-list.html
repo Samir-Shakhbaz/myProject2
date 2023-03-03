@@ -1,30 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Question Manager</title>
     <div th:replace="fragments :: header"/>
-    <!--    <link th:href="@{/css/style3.css}" rel="stylesheet"/>-->
 </head>
+
 <body style="background-color:#EDF1FF">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Test Your Java</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/test/tests}">Tests</a></li>
-            <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
-            <li><a th:href="@{/create-account}">Create an account</a></li>
-            <li><a th:href="@{/logout}">Log out</a></li>
-            <li><a th:href="@{/test/list}">Go to test-list</a></li>
-            <li><a th:href="@{/question/new}">Create new question</a></li>
-            <li><a th:href="@{/answer/list}">Go to answer-list</a></li>
-        </ul>
-    </div>
-</nav>
+<div th:replace="fragments :: navigation"></div>
 
 <body>
 <div align="center">
@@ -36,7 +20,7 @@
         <table class="table table-bordered">
         <thead>
         <tr>
-            <th>Question ID</th>
+            <th>Question Id</th>
             <th>Question Name</th>
             <th>Test name + (id)</th>
             <th>Actions</th>
@@ -44,9 +28,9 @@
         </thead>
         <tbody>
         <tr  th:each="question : ${questionList}">
-            <td th:text="${question.id}">Question ID</td>
-            <td th:text="${question.name}">Test name + (id)</td>
-            <td th:text="${question.test}">Test Id</td>
+            <td th:text="${question.id}">Question Id</td>
+            <td th:text="${question.name}">Question Name</td>
+            <td th:text="${question.test}">Test name + (id)</td>
             <td>    <!-- actions -->
                 <a th:href="@{'/question/edit/' + ${question.id}}">Edit</a>
                 <a th:href="@{'/question/delete/' + ${question.id}}">Delete</a>
@@ -60,11 +44,8 @@
         </tbody>
     </table>
     </br>
-    <a th:href="@{/question/new}">Create new question</a>
+    <a th:href="@{/question/new}"><button type="save">Create new question</a>
     </br>
-
-
 </div>
-
 </body>
 </html>

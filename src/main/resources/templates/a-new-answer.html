@@ -1,36 +1,16 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head style="background-color:#EDF1FF">
-    <meta charset="utf-8"/>
     <title>Create new question</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <div th:replace="fragments :: header"/>
 </head>
 
+<body style="background-color:#EDF1FF">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Test Your Java</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/test/tests}">Home</a></li>
-            <li><a th:href="@{/create-account}">Create an account</a></li>
-            <li><a th:href="@{/test/list}">Go to test-list</a></li>
-            <li><a th:href="@{/question/list}">Go to question-list</a></li>
-            <li><a th:href="@{/answer/list}">Go to answer-list</a></li>
-        </ul>
-    </div>
-</nav>
-
-
-<body>
+<div th:replace="fragments :: navigation"></div>
 
 <div align="center">
     <h1>Create New Answer</h1>
-    <h2></h2>
 
     </br>
 
@@ -50,16 +30,9 @@
             <tbody>
             <tr th:each="answer, itemStat : *{answers}">
 
-<!--                <td th:text="${answer.name}">Name</td>-->
-<!--                <td th:text="${answer.correct}">Correct</td>-->
-
                 <td><input type="text" th:field="*{answers[__${itemStat.index}__].name}" required/></td>
-                <td><input type="checkbox" th:field="*{answers[__${itemStat.index}__].correct}" ></td>
-<!--                <td>    &lt;!&ndash; actions &ndash;&gt;-->
-<!--                    <a th:href="@{'/edit/' + ${user.id}}">Edit</a>-->
-<!--                    <a th:href="@{'/delete/' + ${user.id}}">Delete</a>-->
-<!--                    <a th:href="@{'/block/' + ${user.id}}">Block</a>-->
-<!--                </td>-->
+                <td><input type="checkbox" th:field="*{answers[__${itemStat.index}__].correct}"></td>
+
             </tr>
             </tbody>
 
@@ -67,59 +40,6 @@
         </div>
 
         </br>
-
-<!--        <table class="table table-bordered">-->
-
-<!--            <thead>-->
-<!--            <tr>-->
-<!--                <th>User ID</th>-->
-<!--                <th>Name</th>-->
-<!--                <th>Password</th>-->
-<!--                <th>Score</th>-->
-<!--                <th>Actions</th>-->
-<!--            </tr>-->
-<!--            </thead>-->
-<!--            <tbody>-->
-<!--            <tr th:each="user : ${userList}">-->
-<!--                <td th:text="${user.id}">User ID</td>-->
-<!--                <td th:text="${user.Name}">Name</td>-->
-<!--                <td th:text="${user.password}">Password</td>-->
-<!--                <td th:text="${user.score}">Score</td>-->
-
-<!--                <td>    &lt;!&ndash; actions &ndash;&gt;-->
-<!--                    <a th:href="@{'/edit/' + ${user.id}}">Edit</a>-->
-<!--                    <a th:href="@{'/delete/' + ${user.id}}">Delete</a>-->
-<!--                    <a th:href="@{'/block/' + ${user.id}}">Block</a>-->
-<!--                </td>-->
-<!--            </tr>-->
-<!--            </tbody>-->
-<!--        </table>-->
-
-<!--        <table border="0" cellpadding="10">-->
-<!--            <tr>-->
-<!--
-<!--                <td><input type="text" th:field="*{name}" required/></td>-->
-<!--                <td><input type="text" th:field="*{name}" ></td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--        </br>-->
-<!--        <table border="0" cellpadding="10">-->
-<!--            <tr>-->
-<!--                <td>Answer 3:</td>-->
-<!--                <td><input type="text" th:field="*{name}" required/></td>-->
-<!--                <td><input type="text" th:field="*{name}" ></td>-->
-<!--            </tr>-->
-<!--        </table>-->
-<!--        </br>-->
-<!--        <table border="0" cellpadding="10">-->
-<!--            <tr>-->
-<!--                <td>Answer 4:</td>-->
-<!--                <td><input type="text" th:field="*{name}" required/></td>-->
-<!--                <td><input type="text" th:field="*{name}" ></td>-->
-<!--            </tr>-->
-
-<!--        </table>-->
-
         </br>
         <tr>
             <td colspan="2"><button type="save">Save</button> </td>

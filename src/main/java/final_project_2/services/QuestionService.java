@@ -1,6 +1,6 @@
 package final_project_2.services;
 
-import final_project_2.exceptions.NoSuchQuestionException;
+import final_project_2.exceptions.NotFoundException;
 import final_project_2.models.Question;
 import final_project_2.repositories.QuestionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +38,7 @@ public class QuestionService {
     //The findById function uses a SELECT query with a WHERE clause in the DB.
     public Question getQuestion(Long id) {
         return questionRepository.findById(id)
-                .orElseThrow(NoSuchQuestionException::new);
+                .orElseThrow(NotFoundException::new);
     }
 
     // The deleteById function deletes the question by doing a DELETE in the DB.

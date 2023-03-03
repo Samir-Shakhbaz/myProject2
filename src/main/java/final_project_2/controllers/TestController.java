@@ -144,8 +144,6 @@ public class TestController {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (!principal.toString().equals("anonymousUser")) {
             User user = (User) principal;
-//            System.out.println(user);
-//            System.out.println(user.isAdmin());
             model.addAttribute("isAdmin", user.isAdmin());
         } else {
             model.addAttribute("isAdmin", false);
@@ -153,7 +151,6 @@ public class TestController {
         model.addAttribute("testObject", test);
         return "test";
     }
-
 }
 
 

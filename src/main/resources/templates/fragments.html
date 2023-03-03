@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <div th:fragment="header">
     <meta charset="utf-8"/>
@@ -18,19 +18,21 @@
 <div th:fragment="navigation">
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-<!--        <div class="navbar-header">-->
+
             <a th:href="@{/}" class="navbar-brand">Test Your Java</a>
-<!--        </div>-->
+
         <ul class="nav navbar-nav">
             <li class="active"><a th:href="@{/}">Home</a></li>
             <li><a th:href="@{/test/tests}">Tests</a></li>
-            <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
-            <li><a th:href="@{/create-account}">Create an account</a></li>
-            <li><a th:href="@{/logout}">Log out</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/test/list}">Go to test-list</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/question/list}">Go to question-list</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/answer/list}">Go to answer-list</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/user-list}">Go to user-list</a></li>
+            <li sec:authorize="!hasRole('USER')"><a th:href="@{/login}" class="link-dark">Log in</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/login}" class="link-dark">Log in</a></li>
+            <li sec:authorize="!hasRole('USER')"><a th:href="@{/create-account}">Create an account</a></li>
+            <li sec:authorize="hasRole('USER')"><a th:href="@{/logout}">Log out</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/create-account}">Create an account</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/test/list}">Go to test-list</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/question/list}">Go to question-list</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/answer/list}">Go to answer-list</a></li>
+            <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/user-list}">Go to user-list</a></li>
             <li><a th:href="@{/about}">About</a></li>
         </ul>
     </div>

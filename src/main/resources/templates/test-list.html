@@ -1,29 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
 <head>
     <title>Test List Manager</title>
     <div th:replace="fragments :: header"/>
-    <!--    <link th:href="@{/css/style2.css}" rel="stylesheet"/>-->
 </head>
+
 <body style="background-color:#EDF1FF">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Test Your Java</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/test/tests}">Tests</a></li>
-            <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
-            <li><a th:href="@{/create-account}">Create an account</a></li>
-            <li><a th:href="@{/logout}">Log out</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/test/new}">Create new test</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/question/list}">Go to question-list</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/answer/list}">Go to answer-list</a></li>
-        </ul>
-    </div>
-</nav>
+<div th:replace="fragments :: navigation"></div>
 <body>
     <div align="center">
 
@@ -48,13 +32,9 @@
                 <td th:text="${test.name}">Test Name</td>
                 <td>Question List:
                     <select class="form-select" name="questionId">
-<!--                        <option th:if="${questionList.isEmpty()}">None Available</option>-->
                         <option th:each="question : ${test.questions}" th:value="${question.id}" th:text="${question.toString()}"></option>
                     </select>
                 </td>
-<!--            </tr>-->
-
-<!--                <td th:text="${test.question != null} ? ${test.question.id}"></td>-->
                 <td>
                     <a th:href="@{'/test/tests/' + ${test.id}}">Link</a>
                 </td>
@@ -66,11 +46,9 @@
             </tbody>
         </table>
 
-            </br>
-            <a th:href="@{/test/new}">Create new test</a>
-
-            </br>
-
+            <tr>
+                <a th:href="@{/test/new}"><button type="save">Create new test</button></a>
+            </tr>
     </div>
     </div>
 </body>

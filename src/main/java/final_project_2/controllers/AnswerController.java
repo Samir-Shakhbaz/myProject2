@@ -76,12 +76,8 @@ public class AnswerController {
         answers.getAnswers().add(answer2);
         answers.getAnswers().add(answer3);
         answers.getAnswers().add(answer4);
-//        model.addAttribute("question", question);
-//        model.addAttribute("answer", answer);
-//        model.addAttribute("answer2", answer2);
-//        model.addAttribute("answer3", answer3);
-//        model.addAttribute("answer4", answer4);
         model.addAttribute("answers", answers);
+
         return "a-new-answer";
     }
 
@@ -146,8 +142,6 @@ public class AnswerController {
             for (Answer answer : question.getAnswers()) {
                 boolean addToScore = true;
 
-                System.out.println("THE USER'S SCORE IS BIG: " + userScore);
-
                 //if the answer isn't null it's added to the list
                 if (answerIds.contains(answer.getId())) {
                     userAnswers.put(question.getId(), answer);
@@ -176,10 +170,8 @@ public class AnswerController {
                     userScore++;
                 }
                 System.out.println("hello " + questionId + "-" + answer.getId());
-                System.out.println("THE USER'S SCORE IS A LOT: " + userScore);
             }
             System.out.println(questionId + ": " + ok + ", wrong: " + wrong);
-
         }
 
         Test test = newTestService.getTest(testId);

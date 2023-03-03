@@ -4,7 +4,6 @@ import final_project_2.FinalProject2Application;
 import final_project_2.configs.Authority;
 import final_project_2.configs.AuthorityEnum;
 import final_project_2.configs.AuthorityRepo;
-import final_project_2.exceptions.NoSuchQuestionException;
 import final_project_2.models.Question;
 import final_project_2.models.User;
 import final_project_2.repositories.QuestionRepository;
@@ -41,7 +40,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes = FinalProject2Application.class)
 @ActiveProfiles("test")
 public class QuestionControllerTest {
-
 
     @Autowired
     MockMvc mockMvc;
@@ -83,15 +81,5 @@ public class QuestionControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(containsString("Create new question")))
                 .andExpect(content().string(containsString("Why?")));
-//        List<Question> questionList = questionService.getAllQuestions();
-//
-//        mockMvc.perform(post("/question/list")
-//                        .contentType(MediaType.APPLICATION_FORM_URLENCODED_VALUE))
-////                .andDo(print())
-//                .andExpect(status().isForbidden())
-//                .andExpect(content().contentType("application/json"));
-
     }
-
-
 }

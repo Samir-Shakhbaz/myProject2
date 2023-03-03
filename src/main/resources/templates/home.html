@@ -17,7 +17,7 @@
     </br>
     </br>
     <h4>
-        Please, click to create an account to get full access to the tests.
+        Please, create an account to get full access to the tests.
 
     </h4>
 
@@ -30,20 +30,14 @@
 
     <div class="container" align="center">
         <div class="bg-light p-4 rounded m-2">
-<!--            <th:block th:unless="${articleList.isEmpty()}">-->
                 <th:block th:if="${searchArticle != null}">
                 <div class="row justify-content-center">
-<!--                    <div class="col-auto" th:each="article: ${articleList}">-->
                         <div class="card" style="width: 18rem; height: 34rem;">
-<!--                            <img th:unless="${article.imageUrl == null}" th:src="${article.imageUrl}"-->
-<!--                                 class="card-img-top">-->
                             <div class="card-body">
                                 <h5 class="card-title" th:text="${searchArticle.leadParagraph}">title</h5>
-<!--                                <p class="card-text" th:text="${article.summary}">summary</p>-->
                                 <a th:href="${searchArticle.web_url}" class="btn btn-primary">Read More..</a>
                             </div>
                         </div>
-<!--                    </div>-->
                 </div>
             </th:block>
         </div>

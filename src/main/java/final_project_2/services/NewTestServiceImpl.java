@@ -1,5 +1,6 @@
 package final_project_2.services;
 
+import final_project_2.exceptions.NotFoundException;
 import final_project_2.models.Test;
 import final_project_2.repositories.QuestionRepository;
 import final_project_2.repositories.TestRepository;
@@ -47,7 +48,7 @@ public class NewTestServiceImpl implements NewTestService {
     //The findById function uses a SELECT query with a WHERE clause in the DB.
     public Test getTest(Long id) {
         return testRepository.findById(id)
-                .orElse(null);
+                .orElseThrow(NotFoundException::new);
     }
 
     @Override

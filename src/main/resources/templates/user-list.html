@@ -1,47 +1,26 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
 <head>
   <title>User Manager</title>
   <div th:replace="fragments :: header"/>
 </head>
+
 <body style="background-color:#EDF1FF">
 
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">Test Your Java</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a th:href="@{/}">Home</a></li>
-      <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
-      <li><a th:href="@{/create-account}">Create an account</a></li>
-      <li><a th:href="@{/logout}">Log out</a></li>
-      <li><a th:href="@{/test/list}">Go to test-list</a></li>
-      <li><a th:href="@{/question/list}">Go to question-list</a></li>
-      <li><a th:href="@{/answer/list}">Go to answer-list</a></li>
-    </ul>
-  </div>
-</nav>
-
-
+<div th:replace="fragments :: navigation"></div>
 <body>
 <div align="center">
-
   <h1>User List</h1>
 </div>
-
   <div class="container" align="center">
     <h2>Java Fundamentals</h2>
-    <p>The .table-bordered class adds borders to a table:</p>
     <table class="table table-bordered">
-
     <thead>
     <tr>
       <th>User ID</th>
       <th>Name</th>
       <th>Password</th>
-      <th>Score</th>
       <th>Actions</th>
     </tr>
     </thead>
@@ -50,12 +29,11 @@
       <td th:text="${user.id}">User ID</td>
       <td th:text="${user.Name}">Name</td>
       <td th:text="${user.password}">Password</td>
-      <td th:text="${user.score}">Score</td>
 
       <td>    <!-- actions -->
         <a th:href="@{'/edit/' + ${user.id}}">Edit</a>
         <a th:href="@{'/delete/' + ${user.id}}">Delete</a>
-        <a th:href="@{'/block/' + ${user.id}}">Block</a>
+<!--        <a th:href="@{'/block/' + ${user.id}}">Block</a>-->
       </td>
     </tr>
     </tbody>

@@ -92,14 +92,4 @@ public class User implements UserDetails {
         }
         return false;
     }
-
-//    public boolean isUser() throws NullPointerException {
-//        for (Authority authority : authorities) {
-//            if (authority.getAuthority().equals(AuthorityEnum.ROLE_USER.name())) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
 }

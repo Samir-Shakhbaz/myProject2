@@ -4,7 +4,10 @@
     <title>Create New Account</title>
     <div th:replace="fragments :: header"/>
 </head>
+
 <body style="background-color:#EDF1FF">
+
+<div th:replace="fragments :: navigation"></div>
 <div align="center">
     <h1>Create New Account</h1>
     <br/>
@@ -27,14 +30,19 @@
                 <td>Password:</td>
                 <td><input type="text" th:field="*{password}" required/></td>
             </tr>
-              <tr>
+            <tr>
                 <td>Confirm password:</td>
                 <td><input type="text" th:field="*{confirmpassword}" required/></td>
             </tr>
-            <tr>
-                <td colspan="2"><button type="save">Save</button> </td>
-            </tr>
+
         </table>
+
+        </br>
+
+        <tr>
+            <td colspan="2"><button type="save">Save</button> </td>
+        </tr>
+
     </form>
 </div>
 </body>

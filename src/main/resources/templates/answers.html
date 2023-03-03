@@ -1,32 +1,28 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <title>Answers Manager</title>
     <div th:replace="fragments :: header"/>
 </head>
-<body>
-    <div th:replace="fragments :: navigation"/>
-<head>
-    <meta charset="utf-8"/>
-    <title>Answers Manager</title>
-</head>
+
 <body style="background-color:#EDF1FF">
+
+<div th:replace="fragments :: navigation"></div>
 <div align="center">
 
     <h1>Answers</h1>
 
     <br/><br/>
-<!--    <form action="#" th:action="@{/submitAnswer}" th:object="${answer}" method="post">-->
+
     <br>
     <br/><br/>
     <div class="container" align="center">
-<!--        <h2>Java Fundamentals</h2>-->
-<!--        <p>The .table-bordered class adds borders to a table:</p>-->
+
         <table class="table table-bordered">
 
         <thead>
         <tr>
-            <th>Question ID</th>
+            <th sec:authorize="hasRole('ADMIN')">Question ID</th>
             <th>Question Name</th>
             <th>Your Answer</th>
             <th>Correct Answer</th>
@@ -36,7 +32,7 @@
 
         <tr th:each="question : ${testObject.questions}">
 
-            <td th:text="${question.id}"></td>
+            <td sec:authorize="hasRole('ADMIN')" th:text="${question.id}"></td>
             <td th:text="${question.name}"></td>
             <td th:text="${userAnswers.get(question.id)}"></td>
             <td th:text="${correctAnswers.get(question.id)}"></td>

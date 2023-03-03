@@ -26,5 +26,4 @@ public class Article {
     private List<Media> media;
     private String imageUrl;
 
-
 }

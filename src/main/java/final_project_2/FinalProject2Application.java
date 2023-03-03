@@ -56,7 +56,7 @@ public class FinalProject2Application implements CommandLineRunner {
             userRepository.save(new User("user", passwordEncoder.encode("user"), Collections.singletonList(userAuthority)));
         }
         if (userRepository.findByName("admin") == null) {
-            userRepository.save(new User("admin", passwordEncoder.encode("admin"), Arrays.asList(adminAuthority, userAuthority)));
+            userRepository.save(new User("admin", passwordEncoder.encode("admin1776"), Arrays.asList(adminAuthority, userAuthority)));
         }
     }
 

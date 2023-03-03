@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Create New Answer</title>
     <div th:replace="fragments :: header"/>
 </head>
+
 <body style="background-color:#EDF1FF">
 <div align="center">
     <h1>Create New Answer</h1>
@@ -11,10 +12,7 @@
     <form action="#" th:action="@{/answer/save}" th:object="${answer}" method="post">
 
         <table border="0" cellpadding="10">
-<!--            <tr>-->
-<!--                <td>Answer id:</td>-->
-<!--                <td><input type="text" th:field="*{id}" required/></td>-->
-<!--            </tr>-->
+
             <tr>
                 <td>Answer Name:</td>
                 <td><input type="text" th:field="*{name}" required/></td>

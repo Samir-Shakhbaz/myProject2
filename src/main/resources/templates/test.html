@@ -4,26 +4,12 @@
 <head>
     <title>Question Manager</title>
     <div th:replace="fragments :: header"/>
-<!--<link th:href="@{/css/style3.css}" rel="stylesheet"/>-->
+    <link th:href="@{/css/styleRadio.css}" rel="stylesheet"/>
 </head>
+
 <body style="background-color:#EDF1FF">
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">Test Your Java</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/login}" class="link-dark">Log in</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/create-account}">Create an account</a></li>
-            <li><a th:href="@{/logout}">Log out</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/test/list}">Go to test-list</a></li>
-            <li th:if="${isAdmin}"><a th:href="@{/question/list}">Go to question-list</a></li>
-            <li th:if="${isAdmin}" ><a th:href="@{/answer/list}">Go to answer-list</a></li>
-        </ul>
-    </div>
-</nav>
+<div th:replace="fragments :: navigation"></div>
 
 <body>
 <div align="center">
@@ -40,10 +26,10 @@
 
         <thead>
         <tr>
-            <th>Question Id</th>
+
             <th>Question</th>
-            <th>Answer Id:</th>
-<!--            <th>Answer</th>-->
+            <th>Answer</th>
+
         </tr>
         </thead>
 
@@ -52,14 +38,17 @@
         <tr th:each="question : ${testObject.questions}">
 
 
-                <td th:text="${question.id}"></td>
+<!--                <td th:text="${question.id}"></td>-->
                 <td th:text="${question.name}"></td>
                 <td>
-                        <input type="radio" th:each="answer : ${question.answers}"
-                           th:text="${answer.id + ': ' + answer.name}"
+                    <ul th:each="answer : ${question.answers}">
+                        <input type="radio" style="margin-right:10px"
+                           th:text="${answer.name}"
                            th:id="${answer.id}"
                            th:name="${question.id}"
-                           th:value="${answer.id}" value="HTML"></td>
+                           th:value="${answer.id}">
+                    </ul>
+                </td>
           </tr>
         </tbody>
 
@@ -70,30 +59,7 @@
         <td colspan="2"><button type="submit">Submit</button> </td>
     </tr>
     </form>
-
-
-
-<!--            <table border="1" cellpadding="10">-->
-<!--                <thead>-->
-<!--                <tr>-->
-<!--                    <th>Answer Id</th>-->
-<!--                    &lt;!&ndash;                    <th>Answer Name</th>&ndash;&gt;-->
-<!--                    <th>Answer</th>-->
-<!--                </tr>-->
-<!--                </thead>-->
-<!--                <tbody>-->
-
-<!--                </tbody>-->
-<!--            </table>-->
-
-            <!--            <div  th:each="answer : ${question.answers}" >-->
-            <!--                <input type="radio">-->
-
-            <!--            </div>-->
             <br>
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>
 </body>
